@@ -157,6 +157,17 @@ namespace Amphetamine.Blocks
             return AcquireAtOffset(Offset(id), _header.BlockSize);
         }
 
+        private BlockPointer AcquireAtOffset(long offset, long size)
+        {
+            var accessor = _file.CreateViewAccessor(offset, size);
+            return new BlockPointer(accessor, offset);
+        }
+
+        public BlockPointer Acquire(long id)
+        {
+            return AcquireAtOffset(Offset(id), _header.BlockSize);
+        }
+
         #region static factories
         /// <summary>
         /// Open an existing block store
