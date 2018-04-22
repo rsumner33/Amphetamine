@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.IO.MemoryMappedFiles;
 using System.Runtime.InteropServices;
@@ -141,6 +141,17 @@ namespace Amphetamine.Blocks
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        public BlockPointer Acquire(long id)
+        {
+            return AcquireAtOffset(Offset(id), _header.BlockSize);
+        }
+
+        private BlockPointer AcquireAtOffset(long offset, long size)
+        {
+            var accessor = _file.CreateViewAccessor(offset, size);
+            return new BlockPointer(accessor, offset);
+        }
+
         public BlockPointer Acquire(long id)
         {
             return AcquireAtOffset(Offset(id), _header.BlockSize);
