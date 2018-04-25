@@ -152,6 +152,11 @@ namespace Amphetamine.Blocks
             return new BlockPointer(accessor, offset);
         }
 
+        /// <summary>
+        /// Acquire a point to the block with the given ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public BlockPointer Acquire(long id)
         {
             return AcquireAtOffset(Offset(id), _header.BlockSize);
