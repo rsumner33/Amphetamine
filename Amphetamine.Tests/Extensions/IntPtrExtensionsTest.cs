@@ -1,4 +1,4 @@
-﻿using Amphetamine.Extensions;
+using Amphetamine.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Runtime.InteropServices;
